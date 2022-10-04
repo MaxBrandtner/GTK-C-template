@@ -1,5 +1,6 @@
 #include <gtk/gtk.h>
-
+//#include <resources.c>
+//#include <resources.h>
 
 #define APPLICATION_ID "com.example.Template"
 
@@ -15,7 +16,7 @@ static void app_startup(GApplication *application){
 static void app_activate(GApplication *application){
 	GtkApplication *app = GTK_APPLICATION(application);
 
-	GtkBuilder *build = gtk_builder_new_from_file(UI_DIR_WINDOW);
+	GtkBuilder *build = gtk_builder_new_from_resource("/com/example/Template/Window.ui");
 
 	GtkWidget  *window  = GTK_WIDGET(gtk_builder_get_object(build, "window"));
 
@@ -34,7 +35,7 @@ static void app_activate(GApplication *application){
 
 int main(int argc, char **argv){
 	
-	GtkApplication *app = gtk_application_new(APPLICATION_ID, G_APPLICATION_FLAGS_NONE);
+	GtkApplication *app = gtk_application_new(APPLICATION_ID, G_APPLICATION_NON_UNIQUE);
 
 	g_signal_connect(app, "startup", G_CALLBACK(app_startup), NULL);
 	g_signal_connect(app, "activate", G_CALLBACK(app_activate), NULL);

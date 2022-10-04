@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<!-- Generated with generate-gresource-xml.sh  -->
 <gresources>
-	<gresource prefix='/home/maximilian/Documents/programming/templates/gtk-c-template'>
-		<file>Window.ui</file>
-	</gresource>
+	<gresource prefix="/com/example/Template">
+                <file>Window.ui</file>
+       </gresource>
 </gresources>

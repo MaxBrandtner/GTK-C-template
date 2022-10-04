@@ -1,14 +1,6 @@
 project('Template','c')
 PROJECT_NAME = meson.project_name()
-local_dir = meson.current_source_dir()
-
-message('initial definitions complete')
-
-env = environment()
-#env.set(local_dir, 0)
-run_command('bash', '@0@/generate_gresource_xml.sh'.format(local_dir), PROJECT_NAME, 'ui_file_list.txt', env: env)
-
-message('run command comlete')
+LOCAL_DIR = meson.current_source_dir()
 
 gtkdep = dependency('gtk4')
 #glibcdep = dependency('glibc')
@@ -18,8 +10,7 @@ gtkdep = dependency('gtk4')
 
 
 gnome = import('gnome')
-resources = gnome.compile_resources('resources','@0@.gresource.xml'.format(PROJECT_NAME))
-
+resources = gnome.compile_resources('resources','Template.gresource.xml')
 
 message('gresources complete')
 
@@ -28,5 +19,4 @@ message('gresources complete')
 
 sourcefiles = files('main.c')
 
-
-executable(PROJECT_NAME, sourcefiles, dependencies: gtkdep, c_args:[ '-DLOCAL_DIR="@0@/"'.format(local_dir)], export_dynamic: true)
+executable(PROJECT_NAME, sourcefiles, resources, dependencies: gtkdep, c_args:[ '-DLOCAL_DIR="@0@/"'.format(LOCAL_DIR)], export_dynamic: true)
