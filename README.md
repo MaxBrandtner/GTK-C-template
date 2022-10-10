@@ -1,2 +1,2 @@
 # GTK-C-template
-The template I use for libadwaita(+gtk)/c programming for confinience
+The template I use for gtk/c programming for confinience
