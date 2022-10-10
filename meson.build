@@ -2,8 +2,7 @@ project('Template','c')
 PROJECT_NAME = meson.project_name()
 LOCAL_DIR = meson.current_source_dir()
 
-#gtkdep = dependency('gtk4')
-libadwaita_dep = dependency('libadwaita-1')
+gtkdep = dependency('gtk4')
 #glibcdep = dependency('glibc')
 
 #needed for math library
@@ -20,4 +19,4 @@ message('gresources complete')
 
 sourcefiles = files('main.c')
 
-executable(PROJECT_NAME, sourcefiles, resources, dependencies: libadwaita_dep, c_args:[ '-DLOCAL_DIR="@0@/"'.format(LOCAL_DIR)], export_dynamic: true)
+executable(PROJECT_NAME, sourcefiles, resources, dependencies: gtkdep, c_args:[ '-DLOCAL_DIR="@0@/"'.format(LOCAL_DIR)], export_dynamic: true)
